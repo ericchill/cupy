@@ -394,13 +394,13 @@ cdef class CUDAarray:
 
         if self.ndim == 3:
             if arr.shape != (self.depth, self.height, num_channels*self.width):
-                raise ValueError("shape mismatch")
+                raise ValueError("shape mismatch ndim==3")
         elif self.ndim == 2:
             if arr.shape != (self.height, num_channels*self.width):
-                raise ValueError("shape mismatch")
+                raise ValueError("shape mismatch arr.shape = " + repr(arr.shape) + ", compare = " + repr((self.height, num_channels*self.width)))
         else:  # ndim = 1
             if arr.shape != (num_channels*self.width,):
-                raise ValueError("shape mismatch")
+                raise ValueError("shape mismatch ndim==1")
 
         # - check dtype
         ch_kind = ch['f']
